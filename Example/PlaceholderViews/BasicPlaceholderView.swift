@@ -19,6 +19,13 @@ class BasicPlaceholderView: UIView, BasicPlaceholder {
 		
 		setupView()
 	}
+    
+    init(margin:UIEdgeInsets){
+        super.init(frame: CGRectZero)
+        self.containerMargin = margin
+        
+        setupView()
+    }
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)

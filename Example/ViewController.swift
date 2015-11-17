@@ -22,9 +22,10 @@ class ViewController: UIViewController, StatefulViewController {
         tableView.addSubview(refreshControl)
         
         // Setup placeholder views
-        loadingView = LoadingView(frame: view.frame)
-        emptyView = EmptyView(frame: view.frame)
-        let failureView = ErrorView(frame: view.frame)
+        let margin = UIEdgeInsets(top: 0, left: 0, bottom: 50.0, right: 0)
+        loadingView = LoadingView(margin: margin)
+        emptyView = EmptyView(margin: margin)
+        let failureView = ErrorView(margin: margin)
         failureView.tapGestureRecognizer.addTarget(self, action: Selector("refresh"))
         errorView = failureView
     }
@@ -45,7 +46,7 @@ class ViewController: UIViewController, StatefulViewController {
         print("startLoading -> loadingState: \(self.lastState.rawValue)")
         
         // Fake network call
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(30 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
             // Success
             self.dataArray = ["Merlot", "Sauvignon Blanc", "Blaufränkisch", "Pinot Nior"]
             self.tableView.reloadData()

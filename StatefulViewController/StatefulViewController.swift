@@ -15,6 +15,10 @@ public protocol BackingViewProvider {
     var backingView: UIView { get }
 }
 
+public protocol BasicPlaceholder {
+    var containerMargin: UIEdgeInsets { get set }
+}
+
 /// StatefulViewController protocol may be adopted by a view controller or a view in order to transition to
 /// error, loading or empty views.
 public protocol StatefulViewController: class, BackingViewProvider {

@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import StatefulViewController
 
-class BasicPlaceholderView: UIView {
+class BasicPlaceholderView: UIView, BasicPlaceholder {
 
 	let centerView: UIView = UIView()
-	
+	var containerMargin = UIEdgeInsetsZero
+    
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		

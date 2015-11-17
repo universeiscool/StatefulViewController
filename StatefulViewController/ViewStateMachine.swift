@@ -151,8 +151,9 @@ public class ViewStateMachine {
             self.view.addSubview(newView)
             
             let views = ["view": newView]
-            let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|[view]|", options: [], metrics: nil, views: views)
-            let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: [], metrics: nil, views: views)
+            let margin = (newView as! BasicPlaceholder).containerMargin
+            let hConstraints = NSLayoutConstraint.constraintsWithVisualFormat("|-(left)-[view]-(right)-|", options: [], metrics: ["left":margin.left, "right": margin.right], views: views)
+            let vConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-(top)-[view]-(bottom)-|", options: [], metrics: ["top":margin.top, "bottom": margin.bottom], views: views)
             self.view.addConstraints(hConstraints)
             self.view.addConstraints(vConstraints)
         }
